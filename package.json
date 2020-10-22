@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
-    "heroku-postbuild": "npm run start"
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
