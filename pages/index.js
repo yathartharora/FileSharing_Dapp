@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Icon, Container} from 'semantic-ui-react';
+import {Icon, Container, Button} from 'semantic-ui-react';
 import Head from 'next/head';
 import {Link} from '../routes';
 
@@ -15,17 +15,23 @@ class Sharing extends Component{
                 <h2>File Sharing dApp</h2>
             </head>
             <div style={{textAlign:"center", margin: 30}}>
-                <a style={{fontFamily: "sans-serif",color:"black", fontSize: 40}}> BlockShare</a>
+                <a style={{fontFamily: "sans-serif",color:"black", fontSize: 40}}> BLOCKShare</a>
             <nav> 
         <Icon name="home"/>
-         <a href = "#" style={{color: "black"}}>Home</a> |
+         
+         <Link route={`/`}>
+            <a style={{color: "black"}}>Home</a>
+         </Link> |
          <Icon name="user"/> 
-         <a href = "#" style={{color: "black"}}>About</a> | 
+         <Link route={`/about`}>
+            <a href = "#" style={{color: "black"}}>About</a>
+         </Link> | 
          <Icon name="github"/> 
          <a href = "https://github.com/yathartharora/FileSharing_Dapp" style={{color: "black"}}>Github</a> | 
          <Icon name="medium"/> 
-         <a href = "#" style={{color: "black"}}>Blogs</a> | 
-         <a href = "#">Algorithm</a>  
+         <a href = "https://medium.com/@yathartharora1999" style={{color: "black"}}>Blogs</a> | 
+         <Icon name="git"/>
+         <a href = "https://github.com/yathartharora/FileSharing_Dapp" style={{color: "black"}}>Contribute</a>  
       </nav> </div>
       <body style={{backgroundColor: "white", display: 'block'}}>
           
@@ -53,10 +59,41 @@ class Sharing extends Component{
 
                 </div> */}
         </div>
-        <div style={{backgroundColor: "black", width: 1100, height: 200}}>
+        <div style={{backgroundColor: "black", width: 1100, height: 120}}>
            <div style={{textAlign:"center", marginTop: 20}}>
                 <a style={{color:"white"}}>Copyright 2020, All Rights Reserved</a>
            </div>
+
+           <div style={{marginTop: 50, marginLeft: 220}}> 
+                
+                    <a href="https://www.facebook.com/yatharth.arora.52/">
+                        <Button color="facebook">
+                            <Icon name="facebook"/> Facebook
+                        </Button>
+                    </a>
+                    
+                    <a href="https://twitter.com/YatharthArora8">
+                        <Button color="twitter">
+                            <Icon name="twitter"/> Twitter
+                        </Button>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/yatharth-a-389663128/">
+                        <Button color="linkedin">
+                            <Icon name="linkedin" /> LinkedIn
+                        </Button>
+                    </a>
+                    <a href="https://www.instagram.com/yathartharora_/">
+                        <Button color="instagram">
+                            <Icon name="instagram" /> Instagram
+                        </Button>
+                    </a>
+                    <a>
+                        <Button color="youtube">
+                            <Icon name="youtube" /> YouTube
+                        </Button>
+                    </a>
+                </div>
        
        </div> 
       </body>

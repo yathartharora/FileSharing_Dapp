@@ -5,6 +5,7 @@ routes
 .add('/','index')
 .add('/send','/send')
 .add('/receive','/receive')
+.add('/about','/about')
 .add('/receive/:address','/display')
 
 

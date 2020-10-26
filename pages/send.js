@@ -4,6 +4,7 @@ import web3 from '../Ethereum /web3';
 import {Input, Form, Button, Container, Icon} from 'semantic-ui-react';
 import ipfs from '../ipfs';
 import Head from 'next/head';
+import {Link} from '../routes';
 
 class Send extends Component{
 
@@ -16,7 +17,8 @@ class Send extends Component{
             send: '',
             buffer: null,
             ipfsHash: '',
-            active: false
+            active: false,
+            message: ''
         }
         this.captureFile = this.captureFile.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -30,7 +32,7 @@ class Send extends Component{
             const accounts = await web3.eth.getAccounts();
             console.log(accounts[0]);
             console.log(this.state.ipfsHash)
-            await FileSharing.methods.sendFile(this.state.send, this.state.ipfsHash).send({
+            await FileSharing.methods.sendFile(this.state.send, this.state.ipfsHash, this.state.message).send({
                 from: accounts[0],
                 gas:'1000000',
             })
@@ -81,14 +83,19 @@ class Send extends Component{
                 <h2>File Sharing dApp</h2>
             <nav> 
         <Icon name="home"/>
-         <a href = "#" style={{color: "black"}}>Home</a> |
+        <Link route={`/`}>
+            <a style={{color: "black"}}>Home</a>
+         </Link> | |
          <Icon name="user"/> 
-         <a href = "#" style={{color: "black"}}>About</a> | 
+         <Link route={`/about`}>
+            <a href = "#" style={{color: "black"}}>About</a>
+         </Link> | 
          <Icon name="github"/> 
          <a href = "https://github.com/yathartharora/FileSharing_Dapp" style={{color: "black"}}>Github</a> | 
          <Icon name="medium"/> 
-         <a href = "#" style={{color: "black"}}>Blogs</a> | 
-         <a href = "#">Algorithm</a>  
+         <a href = "https://medium.com/@yathartharora1999" style={{color: "black"}}>Blogs</a> | 
+         <Icon name="git"/>
+         <a href = "https://github.com/yathartharora/FileSharing_Dapp" style={{color: "black"}}>Contribute</a> 
       </nav> </div>
 
       <body>
@@ -101,6 +108,16 @@ class Send extends Component{
                  onChange = {this.captureFile}
                 />
           </div>
+
+          <div style={{marginLeft: 300, marginTop: 50}}>
+              <a>Message: </a>
+              <Input
+                placeholder = "Type a Message"
+                value = {this.state.message}
+                onChange = {event => this.setState({message: event.target.value})}
+            />
+          </div>
+          
                 
                 <br></br>
             <div style={{marginTop: 20, marginLeft: 300}}>
@@ -114,7 +131,7 @@ class Send extends Component{
 
             <div style={{marginTop: 40, marginLeft: 350}}>
                 <Button primary onClick={this.generate}>Generate</Button>
-                <Button primary loading={this.state.loading} disabled={this.state.active}>Submit</Button>   
+                <Button primary loading={this.state.loading} disabled={this.state.active}>Send</Button>   
             </div>    
 
 

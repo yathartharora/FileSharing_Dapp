@@ -12,7 +12,8 @@ class Receive extends Component{
         this.state = {
             ipfsHASH: '',
             errormessage: '',
-            url: ''
+            url: '',
+            message: ''
         }
         this.onClick = this.onClick.bind(this);
         this.generate = this.generate.bind(this);
@@ -27,12 +28,16 @@ class Receive extends Component{
             const pass = await FileSharing.methods.receiveFile().call({
                 from: accounts[0]
             });
-            this.setState({ipfsHASH: pass})
+            const msg = await FileSharing.methods.receiveMessage().call({
+                from: accounts[0]
+            });
+            this.setState({ipfsHASH: pass, message: msg})
             
         } catch (error) {
             this.setState({errormessage: error.message})
         }
         console.log(this.state.ipfsHASH);
+        console.log(this.state.message);
     }
 
     generate(event) {
@@ -59,23 +64,34 @@ class Receive extends Component{
                 <h2>File Sharing dApp</h2>
             <nav> 
         <Icon name="home"/>
-         <a href = "#" style={{color: "black"}}>Home</a> |
+        <Link route={`/`}>
+            <a style={{color: "black"}}>Home</a>
+         </Link> | |
          <Icon name="user"/> 
-         <a href = "#" style={{color: "black"}}>About</a> | 
+         <Link route={`/about`}>
+            <a href = "#" style={{color: "black"}}>About</a>
+         </Link> | 
          <Icon name="github"/> 
          <a href = "https://github.com/yathartharora/FileSharing_Dapp" style={{color: "black"}}>Github</a> | 
          <Icon name="medium"/> 
-         <a href = "#" style={{color: "black"}}>Blogs</a> | 
-         <a href = "#">Algorithm</a>  
+         <a href = "https://medium.com/@yathartharora1999" style={{color: "black"}}>Blogs</a> | 
+         <Icon name="git"/>
+         <a href = "https://github.com/yathartharora/FileSharing_Dapp" style={{color: "black"}}>Contribute</a>  
       </nav> </div>
 
             <div>
             <Button onClick={this.onClick} size="big">Generate URL</Button>
             <Button onClick={this.generate} size="big">Open File</Button>
             </div>
+            <br></br>
 
             <div>
                 <a href={`https://ipfs.io/ipfs/${this.state.ipfsHASH}`}>Generated URL: {`https://ipfs.io/ipfs/${this.state.ipfsHASH}`}</a>
+            </div>
+            <br></br>
+            <div>
+                <h2>Attached Message:</h2>
+                <p>{this.state.message}</p>
             </div>
 
             </Container>
