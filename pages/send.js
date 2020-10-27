@@ -99,7 +99,7 @@ class Send extends Component{
       </nav> </div>
 
       <body>
-      <Form onSubmit={this.onSubmit}>
+      <Form>
 
           <div style={{marginLeft: 300, marginTop: 50}}>
               <a>Upload File: </a>
@@ -131,7 +131,7 @@ class Send extends Component{
 
             <div style={{marginTop: 40, marginLeft: 350}}>
                 <Button primary onClick={this.generate}>Generate</Button>
-                <Button primary loading={this.state.loading} disabled={this.state.active}>Send</Button>   
+                <Button primary loading={this.state.loading} disabled={this.state.active} onClick={this.onSubmit}>Send</Button>   
             </div>    
 
 
