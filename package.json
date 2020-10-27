@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
-    "build": "next build",
-    "start": "next start -p $PORT",
-    "heroku-postbuild": "npm run build"
+    "build": "next build && next export",
+    "start": "next start -p $PORT"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +16,7 @@
     "ganache-cli": "^6.12.0",
     "ipfs-api": "^26.1.2",
     "mocha": "^8.2.0",
-    "next": "^5.0.0",
+    "next": "^9.3.3",
     "next-routes": "^1.4.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
